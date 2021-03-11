@@ -1,5 +1,6 @@
 # prject files
 local/raw/
+server/models/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

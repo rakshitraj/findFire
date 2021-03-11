@@ -1,4 +1,5 @@
 '''
+Server-side
 This is the server tasked with receiving 
 image data for predictions.
 '''
@@ -15,21 +16,13 @@ def recvall(sock, count):
         count -= len(newbuf)
     return buf
 
-def getData():
-    
-    # Host and port
-    TCP_HOST = 'localhost'
-    TCP_PORT = 5001
-
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.bind((TCP_HOST,TCP_PORT))
-    s.listen(True)
-    conn, addr = s.accept()
-
-    length = recvall(conn,16)
-    stringData = recvall(conn, int(length))
-    data = numpy.frombuffer(stringData, dtype='uint8')
-    s.close()
+def getImgData(s, conn):
+    try:
+        length = recvall(conn,16)
+        stringData = recvall(conn, int(length))
+        data = numpy.frombuffer(stringData, dtype='uint8')
+    finally:
+        conn.close()
 
     # # Code for testing received images
     # decimg=cv2.imdecode(data,1)
