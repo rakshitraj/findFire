@@ -2,6 +2,9 @@
 local/raw/
 server/models/
 
+# withheld due to security
+server/reportPred.py
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
