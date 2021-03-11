@@ -1,5 +1,1 @@
-import getImage
-getImage.recordData()
-
-
 

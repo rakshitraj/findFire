@@ -4,17 +4,17 @@ import os.path
 
 def recordData() :
     key = cv2.waitKey(1)
-    camera = cv2.VideoCapture(0)
+    camera = cv2.VideoCapture(1)
     while True:
         try:
             check, frame = camera.read()
             
-            # # Encoding to JPEG
+            ## Encoding to JPEG
             # success, buffer = cv2.imencode(".jpg", frame)
             
             ## System Checks
             # print(check)
-            #
+            # print(success)
             # print(frame) # matrix value of images
             # cv2.imshow("Capturing", frame)
 
@@ -28,3 +28,4 @@ def recordData() :
         except:
             # Turn off camera
             camera.release()
+    return filename
