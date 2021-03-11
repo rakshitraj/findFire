@@ -21,7 +21,7 @@ def recordData() :
             # Save images
             now = time.strftime('%d-%m-%Y %H%M%S')
             filename = now+'.jpg'
-            path = 'local/raw'
+            path = '/home/raxit/findFire/local/raw'
             cv2.imwrite(filename=os.path.join(path, filename), img=frame)
             camera.release()
             break
