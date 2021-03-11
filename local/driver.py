@@ -1,16 +1,19 @@
+from os import error
 import getImage
 import sendImage
 import cv2
 
 def process():
-    filename = getImage.recordData()
-    check, frame = cv2.imread(filename)
-
-    if check:
-        sendImage.sendData(frame)
-    else: 
-        return -1
+    status = -1
+    filepath = getImage.recordData()
+    
+    if filepath:
+        status = sendImage.sendData(filepath)
+    return status
 
 if __name__ == '__main__':
-    while True:
-        process
+        status =  process()
+        if status == -1:
+           print('error')
+        else:
+            print (status)

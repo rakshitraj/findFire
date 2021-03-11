@@ -4,7 +4,7 @@ import os.path
 
 def recordData() :
     key = cv2.waitKey(1)
-    camera = cv2.VideoCapture(1)
+    camera = cv2.VideoCapture(0)
     while True:
         try:
             check, frame = camera.read()
@@ -28,4 +28,7 @@ def recordData() :
         except:
             # Turn off camera
             camera.release()
-    return filename
+    return os.path.join(path, filename)
+
+if __name__ == '__main__':
+    filename = recordData()
