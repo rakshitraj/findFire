@@ -24,13 +24,15 @@ def getImgData(s, conn):
     finally:
         conn.close()
 
+    decimg = cv2.imdecode(data, 1)
+
     # # Code for testing received images
     # decimg=cv2.imdecode(data,1)
     # cv2.imshow('SERVER',decimg)
     # cv2.waitKey(0)
     # cv2.destroyAllWindows()
 
-    return data
+    return decimg
 
 if __name__ == "__main__":
     data = getData()
