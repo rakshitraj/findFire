@@ -1,5 +1,6 @@
 import os
 from twilio.rest import Client
+import sys
 
 def report(content : str, recipient : str) -> str:
     # account_sid = os.environ['ACe3b1da447e3240e9f3a86c9c9d0f2bd1']
@@ -15,6 +16,7 @@ def report(content : str, recipient : str) -> str:
         )
         return message.sid
     except:
+        print("Error occured while sending report. Not sent.\n", sys.exc_info()[0])
         return 0
 
 if __name__ == '__main__':
