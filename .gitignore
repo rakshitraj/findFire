@@ -1,9 +1,9 @@
 # prject files
 local/raw/
-server/models/
+#server/models/
 
 # withheld due to security
-server/reportPred.py
+#server/reportPred.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
