@@ -7,8 +7,38 @@ import socket
 import cv2
 import numpy
 from time import sleep
+import time
+import csv
 # local modules
 import getImage
+import model
+import reportPred
+
+def proessing(data):
+    path = '/home/raxit/findFire/server/models/model_final.pth'
+    cuda = False
+    try:
+        model = model.loadModel(path, cuda)
+        prediction, probability = model.getPred(data)
+        message_sid = 0
+        if prediction in ['Fire', 'Smoke'] and probability >= 50:
+            now = time.strftime('%d-%m-%Y at %H:%M:%S')
+            content = prediction + 'detected on' + now
+            recipient = '+918084272322'
+            message_sid = reportPred.report(content, recipient)
+            print(message_sid)
+
+        with open('preds.csv', 'w', newline = '\n') as file:
+            writer = csv.writer(file)
+            timestamp = time.strftime(time.strftime('%d%m%Y_%H%M%S'))
+            writer.writerow([timestamp, data, prediction, probability, message_sid, '\n' ])
+        file.close()
+
+        return 0
+
+    except:
+        return 1
+
 
 def getData():
     
@@ -32,5 +62,13 @@ def getData():
         # sleep(5)
         # cv2.destroyAllWindows()
 
+        status = processing(data)
+    
+        if status is 0:
+            print(status)
+        else: 
+            print('error')
+
+
 if __name__ == "__main__":
-    data = getData()
+    getData()
