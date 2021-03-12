@@ -9,6 +9,7 @@ import numpy
 from time import sleep
 import time
 import csv
+import sys
 # local modules
 import getImage
 import model
@@ -28,7 +29,7 @@ def processing(data):
         message_sid = reportPred.report(content, recipient)
         print(message_sid)
 
-    with open('preds.csv', 'w', newline = '\n') as file:
+    with open('preds.csv', 'a', newline = '\n') as file:
         writer = csv.writer(file)
         timestamp = time.strftime(time.strftime('%d%m%Y_%H%M%S'))
         writer.writerow([timestamp, data, prediction, probability, message_sid, '\n' ])
@@ -40,11 +41,11 @@ def processing(data):
     #     return 1
 
 
-def getData():
+def getData(ip):
     
     # Host and port
-    TCP_HOST = 'localhost'
-    TCP_PORT = 5001
+    TCP_HOST = ip
+    TCP_PORT = 10001
 
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.bind((TCP_HOST,TCP_PORT))
@@ -71,4 +72,5 @@ def getData():
 
 
 if __name__ == "__main__":
-    getData()
+    ip = sys.argv[1]
+    getData(ip)

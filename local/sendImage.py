@@ -1,12 +1,13 @@
 import socket
 import cv2
 import numpy
+import sys
 
-def sendData(filepath):
+def sendData(filepath, host: str):
     frame = cv2.imread(filename=filepath)
 
     if frame is not None:
-        TCP_IP = 'localhost'
+        TCP_IP = host
         TCP_PORT = 5001
 
         sock = socket.socket()

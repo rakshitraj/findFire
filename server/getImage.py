@@ -35,4 +35,4 @@ def getImgData(s, conn):
     return decimg
 
 if __name__ == "__main__":
-    data = getData()
+    pass
