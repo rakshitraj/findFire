@@ -3,6 +3,7 @@ import getImage
 import sendImage
 import cv2
 import time
+import sys
 
 def process(ip):
     status = -1
