@@ -3,12 +3,10 @@ from twilio.rest import Client
 import sys
 
 def report(content : str, recipient : str) -> str:
-    # account_sid = os.environ['ACe3b1da447e3240e9f3a86c9c9d0f2bd1']
-    # auth_token = os.environ['ee52b014111ef236675482121ce74fe2']
-    # client = Client(account_sid, auth_token)
+    account_sid = os.environ['TWILIO_ACCOUNT_SID']
+    auth_token = os.environ['TWILIO_AUTH_TOKEN']
+    client = Client(account_sid, auth_token)
     try:
-        client = Client('ACe3b1da447e3240e9f3a86c9c9d0f2bd1', 'ee52b014111ef236675482121ce74fe2')
-
         message = client.messages.create(
             body = content,
             from_ = "+14243810732",
@@ -20,6 +18,6 @@ def report(content : str, recipient : str) -> str:
         return 0
 
 if __name__ == '__main__':
-    content = 'Hello.'
-    recipient = "+918084272322"
+    content = 'Hello Bebo. How u doin?.'
+    recipient = "+917627967001"
     report(content, recipient)

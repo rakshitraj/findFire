@@ -18,27 +18,28 @@ import reportPred
 def processing(data):
     path = '/home/raxit/findFire/server/models/model_final.pth'
     cuda = False
-    #try:
-    predictor = model.loadModel(path, cuda)
-    prediction, probability = model.getPred(data, predictor)
-    message_sid = -1
-    if prediction in ['Fire', 'Smoke'] and probability >= 50:
-        now = time.strftime('%d-%m-%Y at %H:%M:%S')
-        content = prediction + 'detected on' + now
-        recipient = '+918084272322'
-        message_sid = reportPred.report(content, recipient)
-        print(message_sid)
+    try:
+        predictor = model.loadModel(path, cuda)
+        prediction, probability = model.getPred(data, predictor)
+        message_sid = -1
+        if prediction in ['Fire', 'Smoke'] and probability >= 50:
+            now = time.strftime('%d-%m-%Y at %H:%M:%S')
+            content = prediction + 'detected on' + now
+            recipient = '+918084272322'
+            message_sid = reportPred.report(content, recipient)
+            print(message_sid)
 
-    with open('preds.csv', 'a', newline = '\n') as file:
-        writer = csv.writer(file)
-        timestamp = time.strftime(time.strftime('%d%m%Y_%H%M%S'))
-        writer.writerow([timestamp, data, prediction, probability, message_sid, '\n' ])
-    file.close()
+        with open('preds.csv', 'a', newline = '\n') as file:
+            writer = csv.writer(file)
+            timestamp = time.strftime(time.strftime('%d%m%Y_%H%M%S'))
+            writer.writerow([timestamp, data, prediction, probability, message_sid, '\n' ])
+        file.close()
 
-    return 0
+        return 0
 
-    # except :
-    #     return 1
+    except :
+        print(sys.exc_info()[0])
+        return 1
 
 
 def getData(ip):
