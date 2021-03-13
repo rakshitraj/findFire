@@ -18,6 +18,6 @@ def report(content : str, recipient : str) -> str:
         return 0
 
 if __name__ == '__main__':
-    content = 'Hello Bebo. How u doin?.'
-    recipient = "+917627967001"
+    content = 'How u doin?.'
+    recipient = sys.argv[1]
     report(content, recipient)
