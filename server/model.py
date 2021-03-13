@@ -3,7 +3,6 @@ import cv2
 from torchvision import datasets
 import torchvision
 import torch
-import imutils
 from torchvision.transforms import transforms
 import torchvision.models as models
 import numpy as np
