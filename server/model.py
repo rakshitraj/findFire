@@ -36,7 +36,7 @@ def getPred(image, model):
 
 if __name__ == '__main__':
     model = loadModel(path='/home/raxit/findFire/server/models/model_final.pth', cuda=False)
-    for path in ['res/test1.png','res/test2.png','res/test3.png'] :
+    for path in ['res/test0.jpg','res/test1.png','res/test2.png','res/test3.png'] :
         image = cv2.imread(path)
         print(getPred(image, model))
         cv2.imshow('Image', image)
