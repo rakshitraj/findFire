@@ -15,6 +15,14 @@ import getImage
 import model
 import reportPred
 
+def _show(data):
+    # Code for testing received images
+        decimg=cv2.imdecode(data,1)
+        cv2.imshow('SERVER',decimg)
+        #cv2.waitKey(0)
+        sleep(5)
+        cv2.destroyAllWindows()
+
 def processing(data, recipient, predictor):
     
     try:
@@ -54,12 +62,8 @@ def getData(ip, recipient, predictor):
         conn, addr = s.accept()
         data = getImage.getImgData(s, conn)
 
-        # # Code for testing received images
-        # decimg=cv2.imdecode(data,1)
-        # cv2.imshow('SERVER',decimg)
-        # #cv2.waitKey(0)
-        # sleep(5)
-        # cv2.destroyAllWindows()
+        # Show image for testing, time ~ 5 seconds
+        # _show(data)
 
         status = processing(data, recipient, predictor)
     
