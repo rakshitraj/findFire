@@ -15,11 +15,9 @@ import getImage
 import model
 import reportPred
 
-def processing(data, recipient):
-    path = '/home/raxit/findFire/server/models/model_final.pth'
-    cuda = False
+def processing(data, recipient, predictor):
+    
     try:
-        predictor = model.loadModel(path, cuda)
         prediction, probability = model.getPred(data, predictor)
         message_sid = -1
         if prediction in ['Fire', 'Smoke'] and probability >= 50:
@@ -41,7 +39,7 @@ def processing(data, recipient):
         return 1
 
 
-def getData(ip, recipient):
+def getData(ip, recipient, predictor):
     
     # Host and port
     TCP_HOST = ip
@@ -63,7 +61,7 @@ def getData(ip, recipient):
         # sleep(5)
         # cv2.destroyAllWindows()
 
-        status = processing(data, recipient)
+        status = processing(data, recipient, predictor)
     
         if status == 0:
             print(status)
@@ -72,6 +70,11 @@ def getData(ip, recipient):
 
 
 if __name__ == "__main__":
-    ip = sys.argv[1]
-    recipient = sys.argv[2]
-    getData(ip, recipient)
+    ip = sys.argv[1]        # IP address of Server
+    recipient = sys.argv[2] # Phone number of Recipient
+    # Load model
+    path = '/home/raxit/findFire/server/models/model_final.pth'
+    cuda = False
+    predictor = model.loadModel(path, cuda)
+    # Listen for incoming images
+    getData(ip, recipient, predictor)
