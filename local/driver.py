@@ -19,7 +19,7 @@ def process(ip):
 
 if __name__ == '__main__':
     ip = sys.argv[1]
-    int count = 0
+    count = 0
     while True:
         status =  process(ip)
         if status == -1:
