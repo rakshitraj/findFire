@@ -18,6 +18,7 @@ def process(ip):
 
 if __name__ == '__main__':
     ip = sys.argv[1]
+    int count = 0
     while True:
         status =  process(ip)
         if status == -1:
@@ -25,3 +26,7 @@ if __name__ == '__main__':
         else:
             print (status)
         time.sleep(1.5)
+        count+=1
+        if (count > 1000):
+            count = 0
+            pass

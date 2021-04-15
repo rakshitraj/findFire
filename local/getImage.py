@@ -8,7 +8,7 @@ def recordData() :
     # Generate Filename
     now = time.strftime('%d-%m-%Y %H%M%S')
     filename = now+'.jpg'
-    path = '/home/raxit/findFire/local/raw'
+    path = os.path.join(os.path.realpath(sys.argv[0]),'local/raw'))
     # Image path
     image = os.path.join(path, filename)
     # Capture Image

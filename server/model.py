@@ -18,7 +18,7 @@ def loadModel(path, cuda : bool):
 
 def getPred(image, model):
     if not model:
-        model = loadModel('/home/raxit/findFire/server/models/model_final.pth', False)
+        model = loadModel(path= os.path.join(os.path.realpath(sys.argv[0]),'server/models/model_final.pth', cuda=False)
     class_names = ['Fire', 'Neutral', 'Smoke']
     # convert numpy array to PIL Image
     image = transforms.ToPILImage()(image)
@@ -35,9 +35,9 @@ def getPred(image, model):
     return class_names[idx], prob
 
 if __name__ == '__main__':
-    model = loadModel(path='/home/raxit/findFire/server/models/model_final.pth', cuda=False)
+    model = loadModel(path= os.path.join(os.path.realpath(sys.argv[0]),'server/models/model_final.pth', cuda=False)
     for path in ['res/test0.jpg','res/test1.png','res/test2.png','res/test3.png'] :
-        image = cv2.imread(path)
+        image = cv2.imread(os.path.join(os.path.realpath(sys.argv[0]),path))
         print(getPred(image, model))
         cv2.imshow('Image', image)
         cv2.waitKey(0)
