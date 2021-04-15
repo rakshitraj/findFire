@@ -32,7 +32,7 @@ def processing(data, recipient, predictor):
         message_sid = -1
         if prediction in ['Fire', 'Smoke'] and probability >= 50:
             now = time.strftime('%d-%m-%Y at %H:%M:%S')
-            content = prediction + 'detected on' + now
+            content = prediction + ' detected on ' + now
             message_sid = reportPred.report(content, recipient)
             print(message_sid)
 
