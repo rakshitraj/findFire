@@ -14,3 +14,4 @@ touch server/preds.csv || echo "Requirement already satisfied"
 # 2. Source Environment Variable
 source server/twilio.env || echo "Twilio credentials could not be loaded. Please ensure that you have the required credentials."
 
+echo "init DONE!"
