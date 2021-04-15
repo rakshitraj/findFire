@@ -1,6 +1,7 @@
 import time
 import os.path
 from picamera import PiCamera
+import getpass
 
 def recordData() :
     # Instantiate PiCamera object
@@ -8,7 +9,7 @@ def recordData() :
     # Generate Filename
     now = time.strftime('%d-%m-%Y %H%M%S')
     filename = now+'.jpg'
-    path = os.path.join(os.path.realpath(sys.argv[0]),'local/raw'))
+    path = os.path.join('home', getpass.getuser() ,'findFire/local/raw')
     # Image path
     image = os.path.join(path, filename)
     # Capture Image
