@@ -14,6 +14,7 @@ def recordData() :
     image = os.path.join(path, filename)
     # Capture Image
     camera.capture(image)
+    camera.close()
     # Return file-path
     return image
 
