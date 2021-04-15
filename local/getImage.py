@@ -9,7 +9,7 @@ def recordData() :
     # Generate Filename
     now = time.strftime('%d-%m-%Y %H%M%S')
     filename = now+'.jpg'
-    path = os.path.join('home', getpass.getuser() ,'findFire/local/raw')
+    path = os.path.join('/home', getpass.getuser() ,'findFire/local/raw')
     # Image path
     image = os.path.join(path, filename)
     # Capture Image
