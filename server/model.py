@@ -18,7 +18,7 @@ def loadModel(path, cuda : bool):
 
 def getPred(image, model):
     if not model:
-        model = loadModel(path= os.path.join('/home', getpass.getuser(), 'server/models/model_final.pth'), cuda=False)
+        model = loadModel(path= os.path.join('/home', getpass.getuser(), 'findFire/server/models/model_final.pth'), cuda=False)
     class_names = ['Fire', 'Neutral', 'Smoke']
     # convert numpy array to PIL Image
     image = transforms.ToPILImage()(image)
@@ -35,8 +35,8 @@ def getPred(image, model):
     return class_names[idx], prob
 
 if __name__ == '__main__':
-    model = loadModel(path= os.path.join('/home', getpass.getuser(), 'server/models/model_final.pth'), cuda=False)
-    for path in ['res/test0.jpg','res/test1.png','res/test2.png','res/test3.png'] :
+    model = loadModel(path= os.path.join('/home', getpass.getuser(), 'findFire/server/models/model_final.pth'), cuda=False)
+    for path in ['findFire/res/test0.jpg','findFire/res/test1.png','findFire/res/test2.png','findFire/res/test3.png'] :
         image = cv2.imread(os.path.join('/home', getpass.getuser(),path))
         print(getPred(image, model))
         cv2.imshow('Image', image)

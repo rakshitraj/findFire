@@ -8,7 +8,7 @@ def sendData(filepath, host: str):
 
     if frame is not None:
         TCP_IP = host
-        TCP_PORT = 5001
+        TCP_PORT = 10001
 
         sock = socket.socket()
         sock.connect((TCP_IP, TCP_PORT))
