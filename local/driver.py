@@ -1,6 +1,7 @@
 from os import error
 import getImage
 import sendImage
+import removeImg
 import cv2
 import time
 import sys

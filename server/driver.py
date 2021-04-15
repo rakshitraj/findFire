@@ -77,7 +77,7 @@ if __name__ == "__main__":
     ip = sys.argv[1]        # IP address of Server
     recipient = sys.argv[2] # Phone number of Recipient
     # Load model
-    path = os.path.join(os.path.realpath(sys.argv[0]), 'server/models/model_final.pth')
+    path = os.path.join('/home', getpass.getuser(), 'server/models/model_final.pth')
     cuda = False
     predictor = model.loadModel(path, cuda)
     # Listen for incoming images
