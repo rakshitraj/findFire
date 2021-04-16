@@ -36,7 +36,8 @@ def processing(data, recipient, predictor):
             message_sid = reportPred.report(content, recipient)
             print(message_sid)
 
-        with open('preds.csv', 'a', newline = '\n') as file:
+        predsPath = os.path.join('/home', getpass.getuser(), 'findFire/server/preds.csv')
+        with open(path= predsPath, 'a', newline = '\n') as file:
             writer = csv.writer(file)
             timestamp = time.strftime(time.strftime('%d%m%Y_%H%M%S'))
             writer.writerow([timestamp, data, prediction, probability, message_sid, '\n' ])
